@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+
+    <title>GUI</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+   
+
+	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="ui2.css" rel="stylesheet">
+	<link href="ui.css" rel="stylesheet">
+    <style>body { background:#fff; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; }</style>
+	
+    <script src="jquery.js"></script>
+    <script src="jquery2.js"></script>
+    <script src="touchpunch.js"></script>
+  </head>
+  <body >
+
+    <div class="container-fluid" >
+      
+
+          <style>
+		#motion , #control  , #audio { float: left; position: relative; padding: 0; white-space: nowrap;}
+        	#motion li, #control li , #audio li{  background-color: transparent; list-style: none ; z-index:2;width:160px }
+		#motion input, #control input , #audio input{  display: none }
+		#item li{width:100%}
+		#output li {padding: 0px;list-style: none ;height:43px;width:160px}
+		.holder {height:50px ; width:160px; background-image: url("blockplace.png");}
+		#output img{ position:absolute;   }
+		#output input{ display:block   }
+		input {position: absolute; margin-top:20px;margin-left:80px;width:40px}
+		
+          </style>
+          <script>
+			
+          $(function() {
+            $( "#control li, #motion li, #audio li" ).draggable( {
+			 helper:'clone',
+			 revert: "invalid",
+			 connectToSortable: "#output" ,
+			});
+	    $( "#output" ).sortable({ 
+			items: "#one",
+			placeholder: "holder" ,
+			
+	    });
+	    $("#output").draggable({
+		containment:"parent",
+	    });		
+            $( "#tabs" ).tabs();			
+           
+          });
+          
+		
+       
+        
+        </script>
+
+        <div class="row-fluid"  >
+
+        <div id="tabs" class="span2" style="margin-top: 10px">
+          <ul id="item">
+            <li ><a href="#tabs-1" >Control   <img src="block.png" num="0"/>          </a></li>
+            <li><a href="#tabs-2">Motion    <img src="blockmotion.png" />           </a></li>
+			<li><a href="#tabs-3">Audio    <img src="block3.png" />            </a></li>
+          </ul>
+          <div id="tabs-1">
+            <ul id="control" class="block">   
+	       
+              <li id="one" ><img src="block.png" /><input type="text" name="value" maxlength="3" max="100" size="3"></li>
+              
+            </ul>
+          </div>
+          <div id="tabs-2">
+            <ul id="motion" class="block">
+              <li id="one"><img src="blockmotion.png" /><input type="text" name="value" maxlength="3" max="100" size="3"></li>
+              
+            </ul>
+          </div>
+		  <div id="tabs-3">
+            <ul id="audio" class="block">
+              <li id="one"><img src="block3.png" /><input type="text" name="value" maxlength="3" max="100" size="3"></li>
+             
+            </ul>
+          </div>
+        </div>
+		<div id="canvas" style="padding:10px;border-radius: 5px 5px 5px 5px;background-color: #ddd;z-index:-1; height: 800px ;margin-top: 10px" class="span10">
+            <ol id="output" style="width:160px">
+              <li id="0" ><img src="blockstart.png" ></li>
+            </ol>
+         </div>
+      
+
+
+
+        
+
+      
+    </div>
+</div>
+
+	<script src="js/bootstrap.min.js"></script>
+    </body>
+</html>
